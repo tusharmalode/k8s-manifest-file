@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myrs
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In   
+        values: [dev,prod,test]
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+        - name: mycont
+          image: nginx
+          ports:
+           - containerPort: 80
+                   

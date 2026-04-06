@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+ name: myrc
+spec:
+  replicas: 3
+  selector:
+    app: dev
+  template:
+    metadata:
+      labels:
+        app: dev
+    spec:
+      containers:
+        - name: mycint
+          image: nginx
+          ports:
+           - containerPort: 80      
